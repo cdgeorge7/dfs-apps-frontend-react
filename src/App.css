@@ -9,15 +9,94 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #76a17d;
+  color: #ffffff;
+  /* float: none !important; */
+}
+
+.App-header-navbar {
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+
+.App-header-login-button {
+  float: right;
+  width: 84px;
+}
+
+.App-header-link,
+.App-header-link:hover {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.App-sidenav {
+  margin: 0;
+  padding: 0;
+  width: 163px;
+  background-color: #961f1f;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.App-sidenav a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.App-sidenav a.active {
+  background-color: #4caf50;
   color: white;
 }
+
+/* Links on mouse-over */
+.App-sidenav a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.App-appcontent {
+  margin-left: 200px;
+  padding: 1px 16px;
+  /* height: 1000px; */
+}
+
+/* Start login section */
+.login-form-2 {
+  padding: 20%;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  background: #76a17d;
+}
+.login-form-2 h3 {
+  text-align: center;
+  margin-bottom: 12%;
+  color: #fff;
+}
+.btnSubmit {
+  font-weight: 600;
+  width: 50%;
+  color: #282726;
+  background-color: #fff;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+}
+.btnForgetPwd {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.btnForgetPwd:hover {
+  text-decoration: none;
+  color: #fff;
+}
+/* End login section */
 
 .App-link {
   color: #61dafb;
