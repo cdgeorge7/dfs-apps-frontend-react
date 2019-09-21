@@ -8,14 +8,14 @@ import "./App.css";
 import Login from "./components/layout/Login";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true); //init should be false
+  const [loggedIn, setLoggedIn] = useState(false); //init should be false
   const [displayLoginPage, setDisplayLoginPage] = useState(false);
 
   //loggedIn ? console.log("logged in") : console.log("logged out");
 
   return (
     <Router>
-      <div className="container">
+      <div className="container-fluid">
         <Header
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
