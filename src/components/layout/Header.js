@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export default function Header(props) {
   const [displayLoginButton, setDisplayLoginButton] = useState(true);
@@ -20,10 +20,6 @@ export default function Header(props) {
   const sendHome = () => {
     props.setDisplayLoginPage(false);
   };
-
-  props.loggedIn
-    ? console.log("header logged in")
-    : console.log("header logged out");
 
   return (
     <header className="navbar App-header">

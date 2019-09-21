@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import SavedLineups from "../apps/SavedLineups";
 import DisplayLineups from "../apps/DisplayLineups";
 import GenerateLineups from "../apps/GenerateLineups";
-import Login from "./Login";
 
 export default function AppContent() {
   return (
