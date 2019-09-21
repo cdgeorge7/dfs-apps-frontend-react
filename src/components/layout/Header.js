@@ -18,8 +18,7 @@ export default function Header(props) {
   };
 
   const sendHome = () => {
-    console.log("sup");
-    return <Redirect to="/dsf" />;
+    props.setDisplayLoginPage(false);
   };
 
   props.loggedIn
@@ -38,7 +37,7 @@ export default function Header(props) {
         </Link>
         {displayLoginButton ? (
           <Link
-            to="/login"
+            to={props.loggedIn ? "/" : "/login"}
             onClick={fakeLogin}
             className="btn btn-primary App-header-login-button"
           >
