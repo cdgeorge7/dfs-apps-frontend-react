@@ -8,7 +8,7 @@ import "./App.css";
 import Login from "./components/layout/Login";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false); //init should be false
+  const [loggedIn, setLoggedIn] = useState(true); //init should be false
   const [displayLoginPage, setDisplayLoginPage] = useState(false);
 
   //loggedIn ? console.log("logged in") : console.log("logged out");
@@ -22,7 +22,7 @@ function App() {
           setDisplayLoginPage={setDisplayLoginPage}
         />
         {loggedIn ? (
-          <div>
+          <div className="row">
             <SideNav />
             <AppContent />
           </div>

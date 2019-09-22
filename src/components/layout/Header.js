@@ -22,7 +22,7 @@ export default function Header(props) {
   };
 
   return (
-    <header className="navbar App-header">
+    <header className="navbar App-header row sticky-top">
       <nav className="App-header-navbar">
         <Link
           to="/"

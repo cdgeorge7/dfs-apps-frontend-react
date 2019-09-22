@@ -1,8 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import SavedLineups from "../apps/SavedLineups";
-import DisplayLineups from "../apps/DisplayLineups";
-import GenerateLineups from "../apps/GenerateLineups";
+import SavedLineups from "../apps/saved/SavedLineups";
+import DisplayLineups from "../apps/display/DisplayLineups";
+import GenerateLineups from "../apps/generate/GenerateLineups";
 
 export default function AppContent() {
   return (
