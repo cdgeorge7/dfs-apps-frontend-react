@@ -1,41 +1,17 @@
 import React, { useState } from "react";
 import PlayerProjections from "./PlayerProjections";
 
-const playerData = {
-  QB: [
-    { id: 1, name: "mahomes", salary: 7600, proj_points: 33.4 },
-    { id: 2, name: "jackson", salary: 7000, proj_points: 20.4 },
-    { id: 3, name: "brady", salary: 6500, proj_points: 18.4 }
-  ],
-  RB: [
-    { id: 4, name: "mccoy", salary: 7600, proj_points: 33.4 },
-    { id: 5, name: "ingram", salary: 7000, proj_points: 20.4 },
-    { id: 6, name: "kamara", salary: 6500, proj_points: 18.4 }
-  ],
-  WR: [
-    { id: 7, name: "watkins", salary: 7600, proj_points: 33.4 },
-    { id: 8, name: "brown", salary: 7000, proj_points: 20.4 },
-    { id: 9, name: "jones", salary: 6500, proj_points: 18.4 }
-  ],
-  TE: [
-    { id: 10, name: "kelce", salary: 7600, proj_points: 33.4 },
-    { id: 11, name: "ertz", salary: 7000, proj_points: 20.4 },
-    { id: 12, name: "cook", salary: 6500, proj_points: 18.4 }
-  ],
-  DEF: [
-    { id: 13, name: "kc", salary: 7600, proj_points: 33.4 },
-    { id: 14, name: "ne", salary: 7000, proj_points: 20.4 },
-    { id: 15, name: "no", salary: 6500, proj_points: 18.4 }
-  ]
-};
+export default function PositionTabs(props) {
+  const [activeTabData, setActiveTabData] = useState(props.playerData.QB);
+  const [showPlayersData, setShowPlayersData] = useState(true);
 
-export default function PositionTabs() {
-  const [activeTabData, setActiveTabData] = useState(playerData.QB);
+  const clickedPosTab = (e, position) => {
+    setActiveTabData(props.playerData[position]);
+    setShowPlayersData(true);
+  };
 
-  const clicked = (event, position) => {
-    //console.log(activeTabData);
-    console.log(event.target);
-    setActiveTabData(playerData[position]);
+  const clickedGeneratedLineupsTab = () => {
+    setShowPlayersData(false);
   };
 
   return (
@@ -44,7 +20,7 @@ export default function PositionTabs() {
         <li role="presentation" className="nav-item">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
-            onClick={e => clicked(e, "QB")}
+            onClick={e => clickedPosTab(e, "QB")}
           >
             QB
           </button>
@@ -52,7 +28,7 @@ export default function PositionTabs() {
         <li role="presentation" className="nav-item">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
-            onClick={e => clicked(e, "RB")}
+            onClick={e => clickedPosTab(e, "RB")}
           >
             RB
           </button>
@@ -60,7 +36,7 @@ export default function PositionTabs() {
         <li role="presentation" className="nav-item">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
-            onClick={e => clicked(e, "WR")}
+            onClick={e => clickedPosTab(e, "WR")}
           >
             WR
           </button>
@@ -68,7 +44,7 @@ export default function PositionTabs() {
         <li role="presentation" className="nav-item">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
-            onClick={e => clicked(e, "TE")}
+            onClick={e => clickedPosTab(e, "TE")}
           >
             TE
           </button>
@@ -76,13 +52,25 @@ export default function PositionTabs() {
         <li role="presentation" className="nav-item">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
-            onClick={e => clicked(e, "DEF")}
+            onClick={e => clickedPosTab(e, "DEF")}
           >
             DEF
           </button>
         </li>
+        <li
+          role="presentation"
+          className="nav-item"
+          style={{ paddingLeft: "100px" }}
+        >
+          <button
+            className="nav-link ds-white-on-blue-nav app-tab"
+            onClick={clickedGeneratedLineupsTab}
+          >
+            GENERATED LINEUPS
+          </button>
+        </li>
       </ul>
-      <PlayerProjections data={activeTabData} />
+      {showPlayersData ? <PlayerProjections data={activeTabData} /> : null}
     </div>
   );
 }

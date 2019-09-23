@@ -65,6 +65,7 @@
 .App-appcontent {
   margin-left: 200px;
   padding: 1px 16px;
+  padding-top: 10px;
   float: right;
   width: 100%;
   height: 100%;
@@ -78,6 +79,9 @@
   padding-bottom: 5%;
   background: #76a17d;
   /* text-align: center; */
+}
+.login-form-center {
+  padding: 1%;
 }
 .btnSubmit {
   font-weight: 600;
@@ -118,6 +122,19 @@ button.ds-white-on-blue-nav:hover {
 
 .active {
   background: #fbaf33;
+}
+
+.card {
+  background-color: #d3d3d3 !important;
+  width: 60%;
+}
+
+.control-panel-label {
+  display: block;
+}
+
+.control-panel-button {
+  float: right;
 }
 
 /* End tab section */

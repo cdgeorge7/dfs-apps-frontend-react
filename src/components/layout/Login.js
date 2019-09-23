@@ -3,7 +3,7 @@ import React from "react";
 export default function Login() {
   return (
     <div className="row login-form-2">
-      <div>
+      <div className="login-form-center">
         <form>
           <div className="form-group">
             <input
