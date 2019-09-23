@@ -111,12 +111,12 @@
   margin-right: 2px;
 }
 .ds-white-on-blue-nav {
-  background: #0077cc !important;
-  background-color: #0077cc !important;
+  background: #17a2b8 !important;
+  background-color: #17a2b8 !important;
   color: white !important;
 }
 button.ds-white-on-blue-nav:hover {
-  background: #fbaf33 !important;
+  background: #446cad !important;
   color: white !important;
 }
 

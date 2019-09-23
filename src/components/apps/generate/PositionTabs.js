@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PlayerProjections from "./PlayerProjections";
+import GeneratedLineupDisplay from "./GeneratedLineupDisplay";
 
 export default function PositionTabs(props) {
   const [activeTabData, setActiveTabData] = useState(props.playerData.QB);
@@ -70,7 +71,13 @@ export default function PositionTabs(props) {
           </button>
         </li>
       </ul>
-      {showPlayersData ? <PlayerProjections data={activeTabData} /> : null}
+      {showPlayersData ? (
+        <PlayerProjections data={activeTabData} />
+      ) : (
+        <GeneratedLineupDisplay
+          generatedLineupData={props.generatedLineupData}
+        />
+      )}
     </div>
   );
 }
