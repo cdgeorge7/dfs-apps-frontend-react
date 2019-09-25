@@ -12,6 +12,11 @@ function App() {
   const [displayLoginPage, setDisplayLoginPage] = useState(false);
 
   //loggedIn ? console.log("logged in") : console.log("logged out");
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_PROD_API_URL
+      : process.env.REACT_APP_DEV_API_URL;
+  console.log(API_URL);
 
   return (
     <Router>

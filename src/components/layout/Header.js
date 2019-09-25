@@ -29,7 +29,7 @@ export default function Header(props) {
           className="App-header-link navbar-brand"
           onClick={sendHome}
         >
-          <h1>DFS App Suite</h1>
+          <h1>DFS App Suites</h1>
         </Link>
         {displayLoginButton ? (
           <Link

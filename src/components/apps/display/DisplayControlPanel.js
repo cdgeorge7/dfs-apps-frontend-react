@@ -4,7 +4,9 @@ export default function DisplayControlPanel(props) {
   return (
     <div className="card">
       <div className="card-body">
-        <div></div>
+        <div>
+          <button className="btn btn-lg btn-info">Sort</button>
+        </div>
       </div>
     </div>
   );

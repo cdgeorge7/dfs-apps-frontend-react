@@ -95,7 +95,7 @@ const dummyGeneratedLineups = {
   ]
 };
 
-export default function GenerateLineups(props) {
+export default function Generate(props) {
   const [generateLineups, setGenerateLineups] = useState(false);
   const [playerData, setPlayerData] = useState(dummyPlayerData);
   const [generatedLineupData, setGeneratedLineupData] = useState({});
