@@ -6,10 +6,10 @@ import Generate from "../apps/generate/Generate";
 
 export default function AppContent() {
   return (
-    <div className="App-appcontent">
+    <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4s">
       <Route path="/saved" component={SavedLineups} />
       <Route path="/display" component={Display} />
       <Route path="/generate" component={Generate} />
-    </div>
+    </main>
   );
 }

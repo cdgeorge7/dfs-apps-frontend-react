@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import LoginButton from "./LoginButton";
 
 export default function Header(props) {
   const [displayLoginButton, setDisplayLoginButton] = useState(true);
@@ -20,6 +21,27 @@ export default function Header(props) {
   const sendHome = () => {
     props.setDisplayLoginPage(false);
   };
+
+  return (
+    <nav className="navbar navbar-dark sticky-top bg-green flex-md-nowrap p-0">
+      <Link
+        to="/"
+        className="navbar-brand col-sm-3 col-md-2 mr-0"
+        onClick={sendHome}
+      >
+        DFS Apps
+      </Link>
+      <LoginButton
+        loggedIn={props.loggedIn}
+        setLoggedIn={props.setLoggedIn}
+        setDisplayLoginPage={props.setDisplayLoginPage}
+        setDisplayLoginButton={setDisplayLoginButton}
+      />
+    </nav>
+  );
+}
+
+/*
 
   return (
     <header className="navbar App-header row sticky-top">
@@ -43,4 +65,5 @@ export default function Header(props) {
       </nav>
     </header>
   );
-}
+
+  */

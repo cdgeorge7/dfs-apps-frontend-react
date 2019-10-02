@@ -20,23 +20,23 @@ function App() {
 
   return (
     <Router>
-      <div className="container-fluid">
-        <Header
-          loggedIn={loggedIn}
-          setLoggedIn={setLoggedIn}
-          setDisplayLoginPage={setDisplayLoginPage}
-        />
+      <Header
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        setDisplayLoginPage={setDisplayLoginPage}
+      />
+      <div className="container-fluid h-100">
         {loggedIn ? (
-          <div className="row">
+          <div className="row h-100">
             <SideNav />
             <AppContent />
           </div>
         ) : displayLoginPage ? (
-          <div>
+          <div className="row h-100">
             <Login />
           </div>
         ) : (
-          <div>
+          <div className="row h-100">
             <Home />
           </div>
         )}
