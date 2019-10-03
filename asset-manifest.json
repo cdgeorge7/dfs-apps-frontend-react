@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/dfs-apps-frontend-react/static/css/main.78f4adb3.chunk.css",
+    "main.js": "/dfs-apps-frontend-react/static/js/main.d85ebbad.chunk.js",
+    "main.js.map": "/dfs-apps-frontend-react/static/js/main.d85ebbad.chunk.js.map",
+    "runtime~main.js": "/dfs-apps-frontend-react/static/js/runtime~main.828a68ca.js",
+    "runtime~main.js.map": "/dfs-apps-frontend-react/static/js/runtime~main.828a68ca.js.map",
+    "static/css/2.266e55a5.chunk.css": "/dfs-apps-frontend-react/static/css/2.266e55a5.chunk.css",
+    "static/js/2.1ba7060f.chunk.js": "/dfs-apps-frontend-react/static/js/2.1ba7060f.chunk.js",
+    "static/js/2.1ba7060f.chunk.js.map": "/dfs-apps-frontend-react/static/js/2.1ba7060f.chunk.js.map",
+    "index.html": "/dfs-apps-frontend-react/index.html",
+    "precache-manifest.c1304ae3856f0d7204e03cbfdbbb606b.js": "/dfs-apps-frontend-react/precache-manifest.c1304ae3856f0d7204e03cbfdbbb606b.js",
+    "service-worker.js": "/dfs-apps-frontend-react/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/dfs-apps-frontend-react/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.78f4adb3.chunk.css.map": "/dfs-apps-frontend-react/static/css/main.78f4adb3.chunk.css.map"
+  }
+}
