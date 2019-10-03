@@ -1,10 +1,13 @@
 import React from "react";
+import { Route } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="row content">
-      <div className="col-sm-9">Explainer</div>
-      <div className="col-sm-9">Create Account section</div>
-    </div>
+    <Route path="/" exact>
+      <div className="content">
+        <div className="">Explainer</div>
+        <div className="">Create Account section</div>
+      </div>
+    </Route>
   );
 }

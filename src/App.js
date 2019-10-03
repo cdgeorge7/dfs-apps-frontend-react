@@ -3,7 +3,7 @@ import Header from "./components/layout/Header";
 import SideNav from "./components/layout/SideNav";
 import AppContent from "./components/layout/AppContent";
 import Home from "./components/layout/Home";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/layout/Login";
 
@@ -28,16 +28,13 @@ function App() {
       <div className="container-fluid h-100">
         {loggedIn ? (
           <div className="row h-100">
+            <Redirect to="/saved" />
             <SideNav />
             <AppContent />
           </div>
-        ) : displayLoginPage ? (
-          <div className="row h-100">
-            <Login />
-          </div>
         ) : (
-          <div className="row h-100">
-            <Home />
+          <div className="row h-100 justify-content-md-center">
+            {displayLoginPage ? <Login setLoggedIn={setLoggedIn} /> : <Home />}
           </div>
         )}
       </div>
@@ -46,3 +43,14 @@ function App() {
 }
 
 export default App;
+
+/*
+
+: displayLoginPage ? (
+          <div className="row h-100 justify-content-md-center">
+            <Login setLoggedIn={setLoggedIn} />
+          </div>
+        ) 
+
+
+*/

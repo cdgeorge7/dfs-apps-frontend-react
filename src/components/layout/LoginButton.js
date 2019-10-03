@@ -5,14 +5,12 @@ export default function LoginButton(props) {
   const fakeLogin = () => {
     if (props.loggedIn) {
       props.setLoggedIn(!props.loggedIn);
-      console.log(1);
+      props.setDisplayLoginPage(false);
       return <Redirect to="/" />;
     } else {
       props.setDisplayLoginPage(true);
-      props.setDisplayLoginButton(true); //should be false, true for testing
+      return <Redirect to="/login" />;
     }
-
-    // props.setLoggedIn(!props.loggedIn);
   };
 
   return (
