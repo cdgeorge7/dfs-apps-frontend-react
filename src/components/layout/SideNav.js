@@ -13,6 +13,9 @@ export default function SideNav() {
       <NavLink to="/generate" className="nav-link sidenav-link w-100">
         Lineup Generator
       </NavLink>
+      <NavLink to="/evaluator" className="nav-link sidenav-link w-100">
+        DFS Player Evaluator
+      </NavLink>
     </nav>
   );
 }

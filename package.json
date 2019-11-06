@@ -2,7 +2,7 @@
   "name": "dfs-tools-suite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cdgeorge7.github.io/dfs-apps-frontend-react",
+  "homepage": ".",
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "aws s3 sync build/ s3://dfsappsuite.com",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

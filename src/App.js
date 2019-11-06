@@ -8,8 +8,9 @@ import "./App.css";
 import Login from "./components/layout/Login";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true); //init should be false
-  const [displayLoginPage, setDisplayLoginPage] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false); //init should be false
+  const [displayLoginPage, setDisplayLoginPage] = useState(true);
+  const [authToken, setAuthToken] = useState("");
 
   //loggedIn ? console.log("logged in") : console.log("logged out");
   const API_URL =
@@ -32,8 +33,12 @@ function App() {
             <AppContent />
           </div>
         ) : (
-          <div className="row h-100 justify-content-md-center">
-            {displayLoginPage ? <Login setLoggedIn={setLoggedIn} /> : <Home />}
+          <div>
+            {displayLoginPage ? (
+              <Login setLoggedIn={setLoggedIn} setAuthToken={setAuthToken} />
+            ) : (
+              <Home />
+            )}
           </div>
         )}
       </div>
