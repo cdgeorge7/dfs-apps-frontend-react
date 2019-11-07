@@ -4,29 +4,29 @@ import GenerateControlPanel from "./GenerateControlPanel";
 
 const dummyPlayerData = {
   QB: [
-    { id: 1, name: "mahomes", salary: 7600, proj_points: 33.4 },
-    { id: 2, name: "jackson", salary: 7000, proj_points: 20.4 },
-    { id: 3, name: "brady", salary: 6500, proj_points: 18.4 }
+    { id: 1, name: "mahomes", team: "KC", salary: 7600, proj_points: 33.4 },
+    { id: 2, name: "jackson", team: "KC", salary: 7000, proj_points: 20.4 },
+    { id: 3, name: "brady", team: "KC", salary: 6500, proj_points: 18.4 }
   ],
   RB: [
-    { id: 4, name: "mccoy", salary: 7600, proj_points: 33.4 },
-    { id: 5, name: "ingram", salary: 7000, proj_points: 20.4 },
-    { id: 6, name: "kamara", salary: 6500, proj_points: 18.4 }
+    { id: 4, name: "mccoy", team: "KC", salary: 7600, proj_points: 33.4 },
+    { id: 5, name: "ingram", team: "KC", salary: 7000, proj_points: 20.4 },
+    { id: 6, name: "kamara", team: "KC", salary: 6500, proj_points: 18.4 }
   ],
   WR: [
-    { id: 7, name: "watkins", salary: 7600, proj_points: 33.4 },
-    { id: 8, name: "brown", salary: 7000, proj_points: 20.4 },
-    { id: 9, name: "jones", salary: 6500, proj_points: 18.4 }
+    { id: 7, name: "watkins", team: "KC", salary: 7600, proj_points: 33.4 },
+    { id: 8, name: "brown", team: "KC", salary: 7000, proj_points: 20.4 },
+    { id: 9, name: "jones", team: "KC", salary: 6500, proj_points: 18.4 }
   ],
   TE: [
-    { id: 10, name: "kelce", salary: 7600, proj_points: 33.4 },
-    { id: 11, name: "ertz", salary: 7000, proj_points: 20.4 },
-    { id: 12, name: "cook", salary: 6500, proj_points: 18.4 }
+    { id: 10, name: "kelce", team: "KC", salary: 7600, proj_points: 33.4 },
+    { id: 11, name: "ertz", team: "KC", salary: 7000, proj_points: 20.4 },
+    { id: 12, name: "cook", team: "KC", salary: 6500, proj_points: 18.4 }
   ],
   DEF: [
-    { id: 13, name: "kc", salary: 7600, proj_points: 33.4 },
-    { id: 14, name: "ne", salary: 7000, proj_points: 20.4 },
-    { id: 15, name: "no", salary: 6500, proj_points: 18.4 }
+    { id: 13, name: "kc", team: "KC", salary: 7600, proj_points: 33.4 },
+    { id: 14, name: "ne", team: "KC", salary: 7000, proj_points: 20.4 },
+    { id: 15, name: "no", team: "KC", salary: 6500, proj_points: 18.4 }
   ]
 };
 

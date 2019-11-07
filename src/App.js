@@ -8,8 +8,8 @@ import "./App.css";
 import Login from "./components/layout/Login";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false); //init should be false
-  const [displayLoginPage, setDisplayLoginPage] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true); //init should be false
+  const [displayLoginPage, setDisplayLoginPage] = useState(false);
   const [authToken, setAuthToken] = useState("");
 
   //loggedIn ? console.log("logged in") : console.log("logged out");
@@ -28,7 +28,7 @@ function App() {
       <div className="container-fluid h-100">
         {loggedIn ? (
           <div className="row h-100">
-            <Redirect to="/saved" />
+            <Redirect to="/generate" />
             <SideNav />
             <AppContent />
           </div>

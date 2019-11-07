@@ -18,7 +18,7 @@ export default function PositionTabs(props) {
   return (
     <div>
       <ul className="nav nav-tabs app-tabs">
-        <li role="presentation" className="nav-item">
+        <li role="presentation" className="nav-item pr-1">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "QB")}
@@ -26,7 +26,7 @@ export default function PositionTabs(props) {
             QB
           </button>
         </li>
-        <li role="presentation" className="nav-item">
+        <li role="presentation" className="nav-item pr-1">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "RB")}
@@ -34,7 +34,7 @@ export default function PositionTabs(props) {
             RB
           </button>
         </li>
-        <li role="presentation" className="nav-item">
+        <li role="presentation" className="nav-item pr-1">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "WR")}
@@ -42,7 +42,7 @@ export default function PositionTabs(props) {
             WR
           </button>
         </li>
-        <li role="presentation" className="nav-item">
+        <li role="presentation" className="nav-item pr-1">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "TE")}
@@ -50,7 +50,7 @@ export default function PositionTabs(props) {
             TE
           </button>
         </li>
-        <li role="presentation" className="nav-item">
+        <li role="presentation" className="nav-item pr-1">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "DEF")}

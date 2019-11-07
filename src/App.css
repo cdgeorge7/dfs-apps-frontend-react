@@ -21,6 +21,10 @@ body {
   background-color: #f8f9fa !important;
 }
 
+.w-0 {
+  width: 0 !important;
+}
+
 .app-content-bg {
   background-color: #fff;
 }

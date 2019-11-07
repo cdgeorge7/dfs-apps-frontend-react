@@ -10,7 +10,7 @@ export default function WeekYearDropdown() {
   //using call to dummy api to simulate call to future api
   const fetchLineupsMetaData = async () => {
     await axios
-      .get("https://swapi.co/api/people/1/")
+      .get("http://localhost:5000")
       .then(res => {
         const dummyLineupsMetaDataJSON =
           '{ "lineups":[{"year":"2018","week":"15","lineups":30},{"year":"2019","week":"1","lineups":30},{"year":"2019","week":"2","lineups":30}] }';

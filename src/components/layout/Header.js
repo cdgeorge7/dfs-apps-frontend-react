@@ -11,7 +11,7 @@ export default function Header(props) {
     <nav className="navbar navbar-dark sticky-top bg-green flex-md-nowrap p-0">
       <Link
         to="/"
-        className="navbar-brand col-sm-3 col-md-2 mr-0"
+        className="navbar-brand col-sm-3 col-md-2 mr-0 w-0"
         onClick={sendHome}
       >
         DFS Apps

@@ -9,7 +9,8 @@ export default function PlayerProjections(props) {
       <table className="table table-striped table-sm">
         <thead>
           <tr>
-            <th>Players</th>
+            <th>Player</th>
+            <th>Team</th>
             <th>Salary</th>
             <th>Projected Points</th>
           </tr>
@@ -19,6 +20,7 @@ export default function PlayerProjections(props) {
             return (
               <tr key={player.id}>
                 <td>{player.name}</td>
+                <td>{player.team}</td>
                 <td>{player.salary}</td>
                 <td>
                   <input defaultValue={player.proj_points} />
