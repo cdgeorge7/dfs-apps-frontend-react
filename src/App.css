@@ -32,3 +32,21 @@ body {
 .card-body {
   background-color: #f8f9fa;
 }
+
+.table-fixed-header {
+  overflow-y: auto;
+}
+.table-fixed-header table {
+  border-collapse: collapse;
+}
+.table-fixed-header th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+/*
+* {
+  outline: 1px solid red;
+}
+*/

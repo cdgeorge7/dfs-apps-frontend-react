@@ -26,6 +26,7 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "QB")}
+            style={{ outline: "none" }}
           >
             QB
           </button>
@@ -34,6 +35,7 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "RB")}
+            style={{ outline: "none" }}
           >
             RB
           </button>
@@ -42,6 +44,7 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "WR")}
+            style={{ outline: "none" }}
           >
             WR
           </button>
@@ -50,6 +53,7 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "TE")}
+            style={{ outline: "none" }}
           >
             TE
           </button>
@@ -58,6 +62,7 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "DST")}
+            style={{ outline: "none" }}
           >
             DST
           </button>
@@ -70,6 +75,7 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={clickedGeneratedLineupsTab}
+            style={{ outline: "none" }}
           >
             GENERATED LINEUPS
           </button>
