@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function PlayerProjections(props) {
-  console.log(props);
-  console.log(props.data);
+  //console.log(props);
+  //console.log(props.data);
   //   return <div>{props.data}</div>;
   return (
     <div className="table-responsive">
@@ -12,7 +12,8 @@ export default function PlayerProjections(props) {
             <th>Player</th>
             <th>Team</th>
             <th>Salary</th>
-            <th>Projected Points</th>
+            <th>Expected Points</th>
+            <th>Standard Deviation</th>
           </tr>
         </thead>
         <tbody>
@@ -21,9 +22,12 @@ export default function PlayerProjections(props) {
               <tr key={player.id}>
                 <td>{player.name}</td>
                 <td>{player.team}</td>
-                <td>{player.salary}</td>
+                <td>{player.dk_salary}</td>
                 <td>
-                  <input defaultValue={player.proj_points} />
+                  <input value={player.xdk_points} style={{ width: "50px" }} />
+                </td>
+                <td>
+                  <input value={player.std_dev} style={{ width: "50px" }} />
                 </td>
               </tr>
             );

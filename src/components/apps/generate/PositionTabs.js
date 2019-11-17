@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PlayerProjections from "./PlayerProjections";
 import GeneratedLineupDisplay from "./GeneratedLineupDisplay";
 
 export default function PositionTabs(props) {
-  const [activeTabData, setActiveTabData] = useState(props.playerData.QB);
+  const [activeTabData, setActiveTabData] = useState([]);
   const [showPlayersData, setShowPlayersData] = useState(true);
 
   const clickedPosTab = (e, position) => {
@@ -14,6 +14,10 @@ export default function PositionTabs(props) {
   const clickedGeneratedLineupsTab = () => {
     setShowPlayersData(false);
   };
+
+  useEffect(() => {
+    setActiveTabData(props.playerData.QB);
+  }, [props.playerData]);
 
   return (
     <div>
@@ -53,9 +57,9 @@ export default function PositionTabs(props) {
         <li role="presentation" className="nav-item pr-1">
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
-            onClick={e => clickedPosTab(e, "DEF")}
+            onClick={e => clickedPosTab(e, "DST")}
           >
-            DEF
+            DST
           </button>
         </li>
         <li

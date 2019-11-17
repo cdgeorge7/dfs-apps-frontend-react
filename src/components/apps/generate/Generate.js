@@ -1,34 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PositionTabs from "./PositionTabs";
 import GenerateControlPanel from "./GenerateControlPanel";
-
-const dummyPlayerData = {
-  QB: [
-    { id: 1, name: "mahomes", team: "KC", salary: 7600, proj_points: 33.4 },
-    { id: 2, name: "jackson", team: "KC", salary: 7000, proj_points: 20.4 },
-    { id: 3, name: "brady", team: "KC", salary: 6500, proj_points: 18.4 }
-  ],
-  RB: [
-    { id: 4, name: "mccoy", team: "KC", salary: 7600, proj_points: 33.4 },
-    { id: 5, name: "ingram", team: "KC", salary: 7000, proj_points: 20.4 },
-    { id: 6, name: "kamara", team: "KC", salary: 6500, proj_points: 18.4 }
-  ],
-  WR: [
-    { id: 7, name: "watkins", team: "KC", salary: 7600, proj_points: 33.4 },
-    { id: 8, name: "brown", team: "KC", salary: 7000, proj_points: 20.4 },
-    { id: 9, name: "jones", team: "KC", salary: 6500, proj_points: 18.4 }
-  ],
-  TE: [
-    { id: 10, name: "kelce", team: "KC", salary: 7600, proj_points: 33.4 },
-    { id: 11, name: "ertz", team: "KC", salary: 7000, proj_points: 20.4 },
-    { id: 12, name: "cook", team: "KC", salary: 6500, proj_points: 18.4 }
-  ],
-  DEF: [
-    { id: 13, name: "kc", team: "KC", salary: 7600, proj_points: 33.4 },
-    { id: 14, name: "ne", team: "KC", salary: 7000, proj_points: 20.4 },
-    { id: 15, name: "no", team: "KC", salary: 6500, proj_points: 18.4 }
-  ]
-};
+import axios from "axios";
 
 const dummyGeneratedLineups = {
   lineups: [
@@ -97,10 +70,71 @@ const dummyGeneratedLineups = {
 
 export default function Generate(props) {
   const [generateLineups, setGenerateLineups] = useState(false);
-  const [playerData, setPlayerData] = useState(dummyPlayerData);
+  const [playerData, setPlayerData] = useState({
+    QB: [],
+    RB: [],
+    WR: [],
+    TE: [],
+    DST: []
+  });
   const [generatedLineupData, setGeneratedLineupData] = useState({});
+  const [week, setWeek] = useState("11");
+  const [year, setYear] = useState("2019");
+  const [error, setError] = useState(false);
   //console.log("here");
   //console.log(generatedLineupData);
+
+  const URL =
+    "http://localhost:5001/players/projections" +
+    `?week=${week}&year=${year}&projectionName=RotoGrinders_Projections_Full`;
+
+  const transformProjectionData = data => {
+    let qb_arr = [];
+    let rb_arr = [];
+    let wr_arr = [];
+    let te_arr = [];
+    let dst_arr = [];
+    data.players.forEach(player => {
+      switch (player.position) {
+        case "QB":
+          qb_arr.push(player);
+          break;
+        case "RB":
+          rb_arr.push(player);
+          break;
+        case "WR":
+          wr_arr.push(player);
+          break;
+        case "TE":
+          te_arr.push(player);
+          break;
+        case "DST":
+          dst_arr.push(player);
+          break;
+        default:
+          throw new Error("Unknown player position.");
+      }
+    });
+    return {
+      QB: qb_arr,
+      RB: rb_arr,
+      WR: wr_arr,
+      TE: te_arr,
+      DST: dst_arr
+    };
+  };
+
+  const fetchProjectionData = async () => {
+    await axios
+      .get(URL)
+      .then(data => {
+        console.log(data);
+        setPlayerData(transformProjectionData(data.data));
+      })
+      .catch(e => {
+        setError(true);
+      });
+  };
 
   useEffect(() => {
     if (generateLineups) {
@@ -108,9 +142,17 @@ export default function Generate(props) {
     }
     setGenerateLineups(false);
   }, [generateLineups]);
+
+  useEffect(() => {
+    fetchProjectionData();
+  }, []);
   return (
     <div>
-      <GenerateControlPanel setGenerateLineups={setGenerateLineups} />
+      <GenerateControlPanel
+        setGenerateLineups={setGenerateLineups}
+        setWeek={setWeek}
+        setYear={setYear}
+      />
       <PositionTabs
         playerData={playerData}
         generatedLineupData={generatedLineupData}
