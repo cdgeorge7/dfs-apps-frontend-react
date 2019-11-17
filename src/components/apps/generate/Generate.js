@@ -95,6 +95,7 @@ export default function Generate(props) {
     let te_arr = [];
     let dst_arr = [];
     data.players.forEach(player => {
+      player["locked"] = false;
       switch (player.position) {
         case "QB":
           qb_arr.push(player);
