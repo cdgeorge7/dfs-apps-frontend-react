@@ -77,12 +77,10 @@ export default function Generate(props) {
     TE: [],
     DST: []
   });
-  const [positionLocks, setPositionLocks] = useState({
-    QB: 0,
+  const [flexLocks, setFlexLocks] = useState({
     RB: 0,
     WR: 0,
-    TE: 0,
-    DST: 0
+    TE: 0
   });
   const [generatedLineupData, setGeneratedLineupData] = useState({});
   const [week, setWeek] = useState("11");
@@ -171,8 +169,8 @@ export default function Generate(props) {
         initialFetchComplete={initialFetchComplete}
         setPlayerData={setPlayerData}
         generatedLineupData={generatedLineupData}
-        positionLocks={positionLocks}
-        setPositionLocks={setPositionLocks}
+        flexLocks={flexLocks}
+        setFlexLocks={setFlexLocks}
       />
     </div>
   );

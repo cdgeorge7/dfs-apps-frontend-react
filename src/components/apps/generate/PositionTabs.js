@@ -10,7 +10,13 @@ export default function PositionTabs(props) {
   const ACTIVE_COLOR = "#b3aead";
 
   const clickedPosTab = (e, position) => {
-    setActiveTabData(props.playerData[position]);
+    setActiveTabData(
+      props.playerData[position].sort((a, b) => {
+        return parseFloat(a["xdk_points"]) < parseFloat(b["xdk_points"])
+          ? 1
+          : -1;
+      })
+    );
     setActiveTabPosition(position);
     setShowPlayersData(true);
   };
@@ -21,7 +27,13 @@ export default function PositionTabs(props) {
   };
 
   useEffect(() => {
-    setActiveTabData(props.playerData.QB);
+    setActiveTabData(
+      props.playerData.QB.sort((a, b) => {
+        return parseFloat(a["xdk_points"]) < parseFloat(b["xdk_points"])
+          ? 1
+          : -1;
+      })
+    );
     setActiveTabPosition("QB");
   }, [props.initialFetchComplete]);
 
@@ -112,8 +124,8 @@ export default function PositionTabs(props) {
           globalPlayerData={props.playerData}
           setGlobalPlayerData={props.setPlayerData}
           activeTabPosition={activeTabPosition}
-          positionLocks={props.positionLocks}
-          setPositionLocks={props.setPositionLocks}
+          flexLocks={props.flexLocks}
+          setFlexLocks={props.setFlexLocks}
         />
       ) : (
         <GeneratedLineupDisplay
