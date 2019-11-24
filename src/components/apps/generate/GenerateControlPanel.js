@@ -1,7 +1,24 @@
 import React from "react";
 
 export default function GenerateControlPanel(props) {
-  const generate = () => props.setGenerateLineups(true);
+  const keepActive = playerArray => {
+    return playerArray.map(player => {
+      if (player.active) {
+        return player;
+      }
+    });
+  };
+
+  const generate = () => {
+    console.log({
+      QB: keepActive(props.playerData.QB),
+      RB: keepActive(props.playerData.RB),
+      WR: keepActive(props.playerData.WR),
+      TE: keepActive(props.playerData.TE),
+      DST: keepActive(props.playerData.DST)
+    });
+    props.setGenerateLineups(true);
+  };
   return (
     <div className="card w-100 ml-2 mb-2">
       <div className="card-body">

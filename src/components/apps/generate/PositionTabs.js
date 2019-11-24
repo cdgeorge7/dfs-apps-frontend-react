@@ -4,21 +4,28 @@ import GeneratedLineupDisplay from "./GeneratedLineupDisplay";
 
 export default function PositionTabs(props) {
   const [activeTabData, setActiveTabData] = useState([]);
+  const [activeTabPosition, setActiveTabPosition] = useState("");
   const [showPlayersData, setShowPlayersData] = useState(true);
+
+  const ACTIVE_COLOR = "#b3aead";
 
   const clickedPosTab = (e, position) => {
     setActiveTabData(props.playerData[position]);
+    setActiveTabPosition(position);
     setShowPlayersData(true);
   };
 
   const clickedGeneratedLineupsTab = () => {
     setShowPlayersData(false);
+    setActiveTabPosition("GEN");
   };
 
   useEffect(() => {
     setActiveTabData(props.playerData.QB);
-  }, [props.playerData]);
+    setActiveTabPosition("QB");
+  }, [props.initialFetchComplete]);
 
+  //console.log(props.playerData);
   return (
     <div>
       <ul className="nav nav-tabs app-tabs">
@@ -26,7 +33,10 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "QB")}
-            style={{ outline: "none" }}
+            style={{
+              outline: "none",
+              backgroundColor: activeTabPosition === "QB" ? ACTIVE_COLOR : null
+            }}
           >
             QB
           </button>
@@ -35,7 +45,10 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "RB")}
-            style={{ outline: "none" }}
+            style={{
+              outline: "none",
+              backgroundColor: activeTabPosition === "RB" ? ACTIVE_COLOR : null
+            }}
           >
             RB
           </button>
@@ -44,7 +57,10 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "WR")}
-            style={{ outline: "none" }}
+            style={{
+              outline: "none",
+              backgroundColor: activeTabPosition === "WR" ? ACTIVE_COLOR : null
+            }}
           >
             WR
           </button>
@@ -53,7 +69,10 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "TE")}
-            style={{ outline: "none" }}
+            style={{
+              outline: "none",
+              backgroundColor: activeTabPosition === "TE" ? ACTIVE_COLOR : null
+            }}
           >
             TE
           </button>
@@ -62,7 +81,10 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={e => clickedPosTab(e, "DST")}
-            style={{ outline: "none" }}
+            style={{
+              outline: "none",
+              backgroundColor: activeTabPosition === "DST" ? ACTIVE_COLOR : null
+            }}
           >
             DST
           </button>
@@ -75,14 +97,24 @@ export default function PositionTabs(props) {
           <button
             className="nav-link ds-white-on-blue-nav app-tab"
             onClick={clickedGeneratedLineupsTab}
-            style={{ outline: "none" }}
+            style={{
+              outline: "none",
+              backgroundColor: activeTabPosition === "GEN" ? ACTIVE_COLOR : null
+            }}
           >
             GENERATED LINEUPS
           </button>
         </li>
       </ul>
       {showPlayersData ? (
-        <PlayerProjections data={activeTabData} />
+        <PlayerProjections
+          data={activeTabData}
+          globalPlayerData={props.playerData}
+          setGlobalPlayerData={props.setPlayerData}
+          activeTabPosition={activeTabPosition}
+          positionLocks={props.positionLocks}
+          setPositionLocks={props.setPositionLocks}
+        />
       ) : (
         <GeneratedLineupDisplay
           generatedLineupData={props.generatedLineupData}

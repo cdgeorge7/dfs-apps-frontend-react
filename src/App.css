@@ -33,6 +33,7 @@ body {
   background-color: #f8f9fa;
 }
 
+/*
 .table-fixed-header {
   overflow-y: auto;
 }
@@ -43,6 +44,43 @@ body {
   position: sticky;
   top: 0;
   background: #fff;
+}
+*/
+
+.table-fixed {
+  background-color: #fff;
+  width: 100%;
+}
+.table-fixed tbody {
+  overflow: auto;
+  height: 300px;
+}
+.table-fixed thead,
+.table-fixed tbody {
+  display: block;
+}
+
+/* Generate Table Widths */
+.lock-width {
+  width: 50px;
+}
+.player-width {
+  width: 175px;
+}
+.team-width {
+  width: 60px;
+}
+.salary-width {
+  width: 60px;
+}
+.x-points-width {
+  width: 90px;
+}
+.std-dev-width {
+  width: 90px;
+}
+.max-all-width {
+  width: 90px;
 }
 
 /*

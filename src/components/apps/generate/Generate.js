@@ -77,10 +77,18 @@ export default function Generate(props) {
     TE: [],
     DST: []
   });
+  const [positionLocks, setPositionLocks] = useState({
+    QB: 0,
+    RB: 0,
+    WR: 0,
+    TE: 0,
+    DST: 0
+  });
   const [generatedLineupData, setGeneratedLineupData] = useState({});
   const [week, setWeek] = useState("11");
   const [year, setYear] = useState("2019");
   const [error, setError] = useState(false);
+  const [initialFetchComplete, setInitialFetchComplete] = useState(false);
   //console.log("here");
   //console.log(generatedLineupData);
 
@@ -96,6 +104,8 @@ export default function Generate(props) {
     let dst_arr = [];
     data.players.forEach(player => {
       player["locked"] = false;
+      player["active"] = true;
+      player["max_allocation"] = 100;
       switch (player.position) {
         case "QB":
           qb_arr.push(player);
@@ -129,8 +139,9 @@ export default function Generate(props) {
     await axios
       .get(URL)
       .then(data => {
-        console.log(data);
+        //console.log(data);
         setPlayerData(transformProjectionData(data.data));
+        setInitialFetchComplete(true);
       })
       .catch(e => {
         setError(true);
@@ -153,10 +164,15 @@ export default function Generate(props) {
         setGenerateLineups={setGenerateLineups}
         setWeek={setWeek}
         setYear={setYear}
+        playerData={playerData}
       />
       <PositionTabs
         playerData={playerData}
+        initialFetchComplete={initialFetchComplete}
+        setPlayerData={setPlayerData}
         generatedLineupData={generatedLineupData}
+        positionLocks={positionLocks}
+        setPositionLocks={setPositionLocks}
       />
     </div>
   );
