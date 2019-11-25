@@ -180,6 +180,7 @@ export default function PlayerProjections(props) {
                       parseInt(e.target.getAttribute("data-id"))
                     )
                   }
+                  style={{ cursor: player.active ? "pointer" : null }}
                 >
                   {player.locked ? (
                     <svg
