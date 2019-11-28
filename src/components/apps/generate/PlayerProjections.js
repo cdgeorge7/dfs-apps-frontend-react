@@ -13,6 +13,32 @@ export default function PlayerProjections(props) {
     props.setGlobalPlayerData(playerDataCopy);
   };
 
+  const flexWillBeSet = (position, change) => {
+    console.log(props.flexLocks);
+    switch (position) {
+      case "RB":
+        return (
+          props.flexLocks["RB"] + change === 3 ||
+          props.flexLocks["WR"] === 4 ||
+          props.flexLocks["TE"] === 2
+        );
+      case "WR":
+        return (
+          props.flexLocks["RB"] === 3 ||
+          props.flexLocks["WR"] + change === 4 ||
+          props.flexLocks["TE"] === 2
+        );
+      case "TE":
+        return (
+          props.flexLocks["RB"] === 3 ||
+          props.flexLocks["WR"] === 4 ||
+          props.flexLocks["TE"] + change === 2
+        );
+      default:
+        console.log("error");
+    }
+  };
+
   const lockPlayer = (posTab, playerId) => {
     let playerDataCopy = { ...props.globalPlayerData };
     let playerObj = playerDataCopy[posTab].find(
@@ -34,115 +60,150 @@ export default function PlayerProjections(props) {
         }
       });
     } else {
-      if (props.flexLocks.RB + props.flexLocks.WR + props.flexLocks.TE === 6) {
-        console.log("yo");
-        playerDataCopy["RB"].forEach(player => {
-          if (player.player_id !== playerId && !player.locked) {
-            if (playerObj.locked) {
-              player.active = false;
-            } else {
-              player.active = true;
-            }
-          }
-        });
-        playerDataCopy["WR"].forEach(player => {
-          if (player.player_id !== playerId && !player.locked) {
-            if (playerObj.locked) {
-              player.active = false;
-            } else {
-              player.active = true;
-            }
-          }
-        });
-        playerDataCopy["TE"].forEach(player => {
-          if (player.player_id !== playerId && !player.locked) {
-            if (playerObj.locked) {
-              player.active = false;
-            } else {
-              player.active = true;
-            }
-          }
-        });
-      } else if (posTab === "RB") {
-        if (
-          props.flexLocks["RB"] >= 2 ||
-          (props.flexLocks["RB"] === 1 &&
-            (props.flexLocks["WR"] === 4 || props.flexLocks["TE"] === 2))
-        ) {
-          playerDataCopy["RB"].forEach(player => {
-            if (player.player_id !== playerId && !player.locked) {
-              if (playerObj.locked) {
-                player.active = false;
-              } else {
-                player.active = true;
-              }
-            }
-          });
-          if (!playerObj.locked) {
-            playerDataCopy["WR"].forEach(player => {
-              player.active = true;
-            });
-            playerDataCopy["TE"].forEach(player => {
-              player.active = true;
-            });
-          }
-        }
-      } else if (posTab === "WR") {
-        if (
-          props.flexLocks["WR"] >= 3 ||
-          (props.flexLocks["WR"] === 2 &&
-            (props.flexLocks["RB"] === 3 || props.flexLocks["TE"] === 2))
-        ) {
-          playerDataCopy["WR"].forEach(player => {
-            if (player.player_id !== playerId && !player.locked) {
-              if (playerObj.locked) {
-                player.active = false;
-              } else {
-                player.active = true;
-              }
-            }
-          });
-          if (!playerObj.locked) {
+      if (change === 1) {
+        //locking players
+        if (posTab === "RB") {
+          if (
+            props.flexLocks["RB"] + change === 2 &&
+            flexWillBeSet("RB", change)
+          ) {
             playerDataCopy["RB"].forEach(player => {
-              player.active = true;
+              if (player.player_id !== playerId && !player.locked) {
+                player.active = false;
+              }
             });
+          } else if (props.flexLocks["RB"] + change === 3) {
+            //lock all positions
+            playerDataCopy["RB"].forEach(player => {
+              if (player.player_id !== playerId && !player.locked) {
+                player.active = false;
+              }
+            });
+            if (props.flexLocks["WR"] === 3) {
+              playerDataCopy["WR"].forEach(player => {
+                if (player.player_id !== playerId && !player.locked) {
+                  player.active = false;
+                }
+              });
+            }
+            if (props.flexLocks["TE"] === 1) {
+              playerDataCopy["TE"].forEach(player => {
+                if (player.player_id !== playerId && !player.locked) {
+                  player.active = false;
+                }
+              });
+            }
+          }
+        } else if (posTab === "WR") {
+          if (
+            props.flexLocks["WR"] + change === 3 &&
+            flexWillBeSet("WR", change)
+          ) {
+            playerDataCopy["WR"].forEach(player => {
+              if (player.player_id !== playerId && !player.locked) {
+                player.active = false;
+              }
+            });
+          } else if (props.flexLocks["WR"] + change === 4) {
+            //lock all positions
+            playerDataCopy["WR"].forEach(player => {
+              if (player.player_id !== playerId && !player.locked) {
+                player.active = false;
+              }
+            });
+            if (props.flexLocks["RB"] === 2) {
+              playerDataCopy["RB"].forEach(player => {
+                if (player.player_id !== playerId && !player.locked) {
+                  player.active = false;
+                }
+              });
+            }
+            if (props.flexLocks["TE"] === 1) {
+              playerDataCopy["TE"].forEach(player => {
+                if (player.player_id !== playerId && !player.locked) {
+                  player.active = false;
+                }
+              });
+            }
+          }
+        } else {
+          if (
+            props.flexLocks["TE"] + change === 1 &&
+            flexWillBeSet("TE", change)
+          ) {
             playerDataCopy["TE"].forEach(player => {
-              player.active = true;
+              if (player.player_id !== playerId && !player.locked) {
+                player.active = false;
+              }
             });
+          } else if (props.flexLocks["TE"] + change === 2) {
+            //lock all positions
+            playerDataCopy["TE"].forEach(player => {
+              if (player.player_id !== playerId && !player.locked) {
+                player.active = false;
+              }
+            });
+            if (props.flexLocks["RB"] === 2) {
+              playerDataCopy["RB"].forEach(player => {
+                if (player.player_id !== playerId && !player.locked) {
+                  player.active = false;
+                }
+              });
+            }
+            if (props.flexLocks["WR"] === 3) {
+              playerDataCopy["WR"].forEach(player => {
+                if (player.player_id !== playerId && !player.locked) {
+                  player.active = false;
+                }
+              });
+            }
           }
         }
       } else {
-        if (
-          props.flexLocks["TE"] >= 1 ||
-          props.flexLocks["RB"] === 3 ||
-          props.flexLocks["WR"] === 4
-        ) {
-          playerDataCopy["TE"].forEach(player => {
-            if (player.player_id !== playerId && !player.locked) {
-              if (playerObj.locked) {
-                player.active = false;
-              } else {
-                player.active = true;
-              }
-            }
+        //unlocking players
+        if (posTab === "RB") {
+          playerDataCopy["RB"].forEach(player => {
+            player.active = true;
           });
-          if (!playerObj.locked) {
+          if (props.flexLocks["RB"] === 3) {
             playerDataCopy["WR"].forEach(player => {
               player.active = true;
             });
+            playerDataCopy["TE"].forEach(player => {
+              player.active = true;
+            });
+          }
+        } else if (posTab === "WR") {
+          playerDataCopy["WR"].forEach(player => {
+            player.active = true;
+          });
+          if (props.flexLocks["WR"] === 4) {
             playerDataCopy["RB"].forEach(player => {
+              player.active = true;
+            });
+            playerDataCopy["TE"].forEach(player => {
+              player.active = true;
+            });
+          }
+        } else {
+          playerDataCopy["TE"].forEach(player => {
+            player.active = true;
+          });
+          if (props.flexLocks["TE"] === 2) {
+            playerDataCopy["RB"].forEach(player => {
+              player.active = true;
+            });
+            playerDataCopy["WR"].forEach(player => {
               player.active = true;
             });
           }
         }
       }
-
       props.setFlexLocks({
         ...props.flexLocks,
         [posTab]: props.flexLocks[posTab] + change
       });
     }
-
     props.setGlobalPlayerData(playerDataCopy);
   };
 

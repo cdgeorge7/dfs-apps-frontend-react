@@ -83,7 +83,7 @@ export default function Generate(props) {
     TE: 0
   });
   const [generatedLineupData, setGeneratedLineupData] = useState({});
-  const [week, setWeek] = useState("11");
+  const [week, setWeek] = useState("13");
   const [year, setYear] = useState("2019");
   const [error, setError] = useState(false);
   const [initialFetchComplete, setInitialFetchComplete] = useState(false);

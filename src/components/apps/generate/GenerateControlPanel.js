@@ -2,10 +2,11 @@ import React from "react";
 
 export default function GenerateControlPanel(props) {
   const keepActive = playerArray => {
-    return playerArray.map(player => {
+    return playerArray.filter(player => {
       if (player.active) {
-        return player;
+        return true;
       }
+      return false;
     });
   };
 
